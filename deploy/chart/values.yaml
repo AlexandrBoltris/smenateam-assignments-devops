@@ -1,0 +1,2 @@
+environment: "default environment"
+environmentFromSecret: "default environment-from-secret"
