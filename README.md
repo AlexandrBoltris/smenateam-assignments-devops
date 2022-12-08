@@ -26,4 +26,6 @@ install -v sops-v3.7.3.linux.amd64 /usr/local/bin/sops
 helm secrets template ./chart -f ./values/prod/values.yaml -f ./values/prod/secrets.yaml
 helm  template ./chart -f ./values/prod/values.yaml -f secrets://./values/prod/secrets.yaml
 
-https://lyz-code.github.io/blue-book/devops/helm/helm_secrets/
+sops updatekeys -y
+
+hemlfile
