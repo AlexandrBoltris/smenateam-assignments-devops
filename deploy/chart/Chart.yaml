@@ -2,6 +2,6 @@ apiVersion: v2
 name: hello-world
 description: A Helm chart for hello-world
 type: application
-version: 0.0.1
+version: 0.0.2
 appVersion: 0.0.1
 icon: https://avatars.githubusercontent.com/u/23064092?s=200&v=4

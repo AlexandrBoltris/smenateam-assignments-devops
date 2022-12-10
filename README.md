@@ -29,3 +29,5 @@ helm  template ./chart -f ./values/prod/values.yaml -f secrets://./values/prod/s
 sops updatekeys -y
 
 hemlfile
+
+eval $(minikube -p minikube docker-env)

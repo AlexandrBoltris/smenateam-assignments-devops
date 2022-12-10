@@ -3,8 +3,25 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: hello-world-hpa
 spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-world-deployment
   maxReplicas: 4
   minReplicas: 2
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
   behavior:
     scaleDown:
       stabilizationWindowSeconds: 30
@@ -12,33 +29,9 @@ spec:
         - type: Pods
           value: 1
           periodSeconds: 15
-        - type: Resource
-          resource:
-            name: cpu
-            target:
-              type: Utilization
-              averageUtilization: 80
-        - type: Resource
-          resource:
-            name: memory
-            target:
-              type: Utilization
-              averageUtilization: 80
     scaleUp:
       stabilizationWindowSeconds: 0
       policies:
         - type: Pods
           value: 1
-          periodSeconds: 15
-        - type: Resource
-          resource:
-            name: cpu
-            target:
-              type: Utilization
-              averageUtilization: 80
-        - type: Resource
-          resource:
-            name: memory
-            target:
-              type: Utilization
-              averageUtilization: 80
+          periodSeconds: 1
