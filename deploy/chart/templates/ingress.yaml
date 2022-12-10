@@ -1,0 +1,6 @@
+#для nginx сервера, который должен сконфигурирован для хостов
+#      1. dev - localhost
+#      2. stage - farforstaging.ru
+#      3. prod - farfor.ru
+#apiVersion:
+#kind: Ingress
