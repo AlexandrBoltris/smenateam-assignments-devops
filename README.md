@@ -31,3 +31,5 @@ sops updatekeys -y
 hemlfile
 
 eval $(minikube -p minikube docker-env)
+
+minikube addons enable ingress

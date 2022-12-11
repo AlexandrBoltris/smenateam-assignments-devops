@@ -2,5 +2,39 @@
 #      1. dev - localhost
 #      2. stage - farforstaging.ru
 #      3. prod - farfor.ru
-#apiVersion:
-#kind: Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  # annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: ingress-nginx
+  defaultBackend:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Exact
+        backend:
+          service:
+            name: hello-world-service
+            port:
+              number: 8000
+      - path: /docs
+        pathType: Exact
+        backend:
+          service:
+            name: hello-world-service
+            port:
+              number: 8000
+
+---
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+  name: ingress-nginx
+spec:
+  controller: k8s.io/ingress-nginx
